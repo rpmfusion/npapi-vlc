@@ -2,7 +2,7 @@
 
 Name:           npapi-vlc
 Version:        1.2.0
-Release:        0.1git%{?githash}%{?dist}
+Release:        0.1%{?githash:git%{githash}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 Group:          Applications/Internet
