@@ -2,7 +2,7 @@
 
 Name:           npapi-vlc
 Version:        1.2.0
-Release:        0.2%{?githash:git%{githash}}%{?dist}
+Release:        0.3%{?githash:git%{githash}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 Group:          Applications/Internet
@@ -15,6 +15,9 @@ Buildrequires:  libtool
 
 BuildRequires:  gecko-devel
 BuildRequires:  vlc-devel
+
+Provides:       mozilla-vlc = %{version}-%{release}
+Obsoletes:      mozilla-vlc < 1.2.0
 
 
 %description
@@ -48,6 +51,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Mon Jan 02 2012 Nicolas Chauvet <kwizart@gmail.com> - 1.2.0-0.3gitf568362
+- Restore Obsoletes mozilla-vlc
+
 * Sun Jan 01 2012 Nicolas Chauvet <kwizart@gmail.com> - 1.2.0-0.2gitf568362
 - Update to today's snapshot
 
