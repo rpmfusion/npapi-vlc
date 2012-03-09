@@ -1,17 +1,18 @@
-%global githash f568362
+#global githash f568362
 
 Name:           npapi-vlc
-Version:        1.2.0
-Release:        0.3%{?githash:git%{githash}}%{?dist}
+Version:        2.0.0
+Release:        1%{?githash:git%{githash}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 Group:          Applications/Internet
 License:        LGPLv2+
 URL:            http://git.videolan.org/?p=npapi-vlc.git;a=summary
-Source0:        npapi-vlc-%{?githash}.tar.gz
+Source0:        http://download.videolan.org/videolan/vlc/%{version}/npapi-vlc-%{version}%{?githash}.tar.xz
+Patch0:         npapi-vlc-master.patch
 BuildRoot:      %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
 
-Buildrequires:  libtool
+#Buildrequires:  libtool
 
 BuildRequires:  gecko-devel
 BuildRequires:  vlc-devel
@@ -25,8 +26,9 @@ NPAPI plugin for libvlc.
 
 
 %prep
-%setup -q -n npapi-vlc-%{githash}
-sh autogen.sh
+%setup -q -n npapi-vlc-%{version}%{?githash}
+%patch0 -p1
+
 
 %build
 %configure
@@ -51,6 +53,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Fri Mar  9 2012 Nicolas Chauvet <kwizart@gmail.com> - 2.0.0-1
+- Update to 2.0.0
+
 * Mon Jan 02 2012 Nicolas Chauvet <kwizart@gmail.com> - 1.2.0-0.3gitf568362
 - Restore Obsoletes mozilla-vlc
 
