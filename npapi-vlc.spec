@@ -1,8 +1,8 @@
 #global githash f568362
 
 Name:           npapi-vlc
-Version:        2.0.0
-Release:        1%{?githash:git%{githash}}%{?dist}
+Version:        2.0.2
+Release:        2%{?githash:git%{githash}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 Group:          Applications/Internet
@@ -53,6 +53,9 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %changelog
+* Sun Mar 03 2013 Nicolas Chauvet <kwizart@gmail.com> - 2.0.2-2
+- Mass rebuilt for Fedora 19 Features
+
 * Fri Mar  9 2012 Nicolas Chauvet <kwizart@gmail.com> - 2.0.0-1
 - Update to 2.0.0
 
