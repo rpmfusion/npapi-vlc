@@ -3,7 +3,7 @@
 
 Name:           npapi-vlc
 Version:        2.0.6
-Release:        1%{?githash:git%{githash}}%{?dist}
+Release:        2%{?githash:git%{githash}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 Group:          Applications/Internet
@@ -16,8 +16,6 @@ Source0:        http://download.videolan.org/videolan/vlc/%{version}/npapi-vlc-%
 BuildRequires:  gecko-devel
 BuildRequires:  vlc-devel
 Requires:       %{name}-filesystem = %{version}-%{release}
-#For transition - to keep until next release
-Requires:       %{name}-gtk = %{version}-%{release}
 
 %description
 NPAPI plugin for libvlc.
@@ -116,6 +114,9 @@ alternatives --remove libvlcplugin.so.%{_arch} %{_libdir}/vlc/npapi/libvlcplugin
 
 
 %changelog
+* Tue Jan 14 2014 Nicolas Chauvet <kwizart@gmail.com> - 2.0.6-2
+- Drop gtk dependency from main
+
 * Fri Apr 12 2013 Nicolas Chauvet <kwizart@gmail.com> - 2.0.6-1
 - Update to 2.0.6
 - Add alternatives support for generic build
