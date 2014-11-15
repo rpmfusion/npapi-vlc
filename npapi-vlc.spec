@@ -2,8 +2,8 @@
 %global _configure ../configure
 
 Name:           npapi-vlc
-Version:        2.0.6
-Release:        3%{?githash:git%{githash}}%{?dist}
+Version:        2.2.0
+Release:        0.1%{?githash:git%{githash}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 Group:          Applications/Internet
@@ -114,6 +114,9 @@ alternatives --remove libvlcplugin.so.%{_arch} %{_libdir}/vlc/npapi/libvlcplugin
 
 
 %changelog
+* Sat Nov 15 2014 Nicolas Chauvet <kwizart@gmail.com> - 2.2.0-0.1
+- Update to 2.2.0
+
 * Mon Sep 01 2014 Sérgio Basto <sergio@serjux.com> - 2.0.6-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_21_22_Mass_Rebuild
 
