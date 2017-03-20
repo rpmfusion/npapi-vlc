@@ -3,7 +3,7 @@
 
 Name:           npapi-vlc
 Version:        2.2.0
-Release:        0.1%{?githash:git%{githash}}%{?dist}
+Release:        0.2%{?githash:git%{githash}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 Group:          Applications/Internet
@@ -114,6 +114,9 @@ alternatives --remove libvlcplugin.so.%{_arch} %{_libdir}/vlc/npapi/libvlcplugin
 
 
 %changelog
+* Mon Mar 20 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 2.2.0-0.2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
+
 * Sat Nov 15 2014 Nicolas Chauvet <kwizart@gmail.com> - 2.2.0-0.1
 - Update to 2.2.0
 
