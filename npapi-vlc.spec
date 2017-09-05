@@ -11,7 +11,7 @@ URL:            https://code.videolan.org/videolan/npapi-vlc
 #Source0:        http://download.videolan.org/videolan/vlc/%{version}/npapi-vlc-%{version}%{?githash}.tar.xz
 Source0:        npapi-vlc-%{?date}.tar.xz
 
-#Buildrequires:  libtool
+Buildrequires:  libtool
 
 BuildRequires:  gecko-devel
 BuildRequires:  vlc-devel
