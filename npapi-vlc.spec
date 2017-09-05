@@ -1,15 +1,15 @@
-#global githash f568362
+%global date 20170905
 %global _configure ../configure
 
 Name:           npapi-vlc
-Version:        2.2.0
-Release:        0.3%{?githash:git%{githash}}%{?dist}
+Version:        2.2.7
+Release:        0.1%{?date:snap%{date}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
-Group:          Applications/Internet
 License:        LGPLv2+
-URL:            http://git.videolan.org/?p=npapi-vlc.git;a=summary
-Source0:        http://download.videolan.org/videolan/vlc/%{version}/npapi-vlc-%{version}%{?githash}.tar.xz
+URL:            https://code.videolan.org/videolan/npapi-vlc
+#Source0:        http://download.videolan.org/videolan/vlc/%{version}/npapi-vlc-%{version}%{?githash}.tar.xz
+Source0:        npapi-vlc-%{?date}.tar.xz
 
 #Buildrequires:  libtool
 
@@ -22,7 +22,6 @@ NPAPI plugin for libvlc.
 
 %package        filesystem
 Summary:        NPAPI plugin for libvlc - filesystem
-Group:          Applications/Internet
 Requires(post): %{_sbindir}/update-alternatives
 Requires(postun): %{_sbindir}/update-alternatives
 
@@ -31,17 +30,15 @@ NPAPI plugin for libvlc - filesystem
 
 %package        gtk
 Summary:        NPAPI plugin for libvlc - gtk version
-Group:          Applications/Internet
 Requires:       %{name}-filesystem = %{version}-%{release}
-Provides:       mozilla-vlc = %{version}-%{release}
-Obsoletes:      mozilla-vlc < 1.2.0
 
 %description    gtk
 NPAPI plugin for libvlc - gtk version.
 
 
 %prep
-%setup -q -n npapi-vlc-%{version}%{?githash}
+%setup -q -n npapi-vlc-%{?date}
+autoreconf -sif
 
 
 %build
@@ -49,24 +46,24 @@ mkdir -p generic gtk
 pushd generic
 %configure --disable-silent-rules --without-gtk
 
-make %{?_smp_mflags}
+%make_build
 popd
 
 pushd gtk
 %configure --disable-silent-rules
 
-make %{?_smp_mflags}
+%make_build
 popd
 
 %install
 mkdir -p $RPM_BUILD_ROOT%{_libdir}/vlc/npapi
 pushd generic
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 mv $RPM_BUILD_ROOT%{_libdir}/mozilla/plugins/libvlcplugin.so \
  $RPM_BUILD_ROOT%{_libdir}/vlc/npapi/libvlcplugin-generic.so
 popd
 pushd gtk
-make install DESTDIR=$RPM_BUILD_ROOT
+%make_install
 mv $RPM_BUILD_ROOT%{_libdir}/mozilla/plugins/libvlcplugin.so \
  $RPM_BUILD_ROOT%{_libdir}/vlc/npapi/libvlcplugin-gtk.so
 popd
@@ -82,7 +79,7 @@ update-alternatives \
     %{_libdir}/mozilla/plugins/libvlcplugin.so \
     libvlcplugin.so.%{_arch} \
     %{_libdir}/vlc/npapi/libvlcplugin-generic.so \
-    10
+    200
 
 %post gtk
 update-alternatives \
@@ -114,6 +111,10 @@ alternatives --remove libvlcplugin.so.%{_arch} %{_libdir}/vlc/npapi/libvlcplugin
 
 
 %changelog
+* Tue Sep 05 2017 Nicolas Chauvet <kwizart@gmail.com> - 2.2.7-0.1snap20170905
+- Update snapshot
+- Bump generic plugin over the gtk one
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 2.2.0-0.3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
