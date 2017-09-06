@@ -14,7 +14,8 @@ Source0:        npapi-vlc-%{?date}.tar.xz
 Buildrequires:  libtool
 
 BuildRequires:  gecko-devel
-BuildRequires:  vlc-devel
+BuildRequires:  pkgconfig(libvlc)
+BuildRequires:  pkgconfig(libvlcpp)
 Requires:       %{name}-filesystem = %{version}-%{release}
 
 %description
