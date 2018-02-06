@@ -1,9 +1,9 @@
-%global date 20170905
+%global date 20180206
 %global _configure ../configure
 
 Name:           npapi-vlc
 Version:        2.2.7
-Release:        0.1%{?date:snap%{date}}%{?dist}
+Release:        0.2%{?date:snap%{date}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 License:        LGPLv2+
@@ -112,6 +112,9 @@ alternatives --remove libvlcplugin.so.%{_arch} %{_libdir}/vlc/npapi/libvlcplugin
 
 
 %changelog
+* Tue Feb 06 2018 Nicolas Chauvet <kwizart@gmail.com> - 2.2.7-0.2snap20180206
+- Update snapshot
+
 * Tue Sep 05 2017 Nicolas Chauvet <kwizart@gmail.com> - 2.2.7-0.1snap20170905
 - Update snapshot
 - Bump generic plugin over the gtk one
