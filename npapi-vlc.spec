@@ -3,7 +3,7 @@
 
 Name:           npapi-vlc
 Version:        2.2.7
-Release:        0.2%{?date:snap%{date}}%{?dist}
+Release:        0.3%{?date:snap%{date}}%{?dist}
 Summary:        NPAPI plugin for libvlc
 
 License:        LGPLv2+
@@ -112,6 +112,9 @@ alternatives --remove libvlcplugin.so.%{_arch} %{_libdir}/vlc/npapi/libvlcplugin
 
 
 %changelog
+* Thu Mar 01 2018 RPM Fusion Release Engineering <leigh123linux@googlemail.com> - 2.2.7-0.3snap20180206
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_28_Mass_Rebuild
+
 * Tue Feb 06 2018 Nicolas Chauvet <kwizart@gmail.com> - 2.2.7-0.2snap20180206
 - Update snapshot
 
